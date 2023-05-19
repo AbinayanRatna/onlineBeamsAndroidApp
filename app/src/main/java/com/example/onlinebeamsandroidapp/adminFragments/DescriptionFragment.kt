@@ -1,6 +1,5 @@
 package com.example.onlinebeamsandroidapp.adminFragments
 
-import android.os.Binder
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +16,7 @@ class DescriptionFragment : Fragment() {
     private lateinit var binding: FragmentDescriptionBinding
     private lateinit var communicator: FragmentCommunicator
     var addFragment =AddFragment()
-    var homeFragment =HomeFragment()
+    var editFragment =EditFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +32,7 @@ class DescriptionFragment : Fragment() {
 
         binding.descriptionCancelBtn.setOnClickListener {
             val transaction=fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, homeFragment)
+            transaction?.replace(R.id.fragment_container, editFragment)
             transaction?.commit()
         }
         return binding.root

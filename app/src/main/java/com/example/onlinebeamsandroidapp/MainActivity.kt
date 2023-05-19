@@ -7,14 +7,13 @@ import com.example.onlinebeamsandroidapp.databinding.ActivityMainBinding
 import com.example.onlinebeamsandroidapp.adminFragments.AddFragment
 import com.example.onlinebeamsandroidapp.adminFragments.CategoryFragment
 import com.example.onlinebeamsandroidapp.adminFragments.DescriptionFragment
-import com.example.onlinebeamsandroidapp.adminFragments.HomeFragment
+import com.example.onlinebeamsandroidapp.adminFragments.EditFragment
 import com.example.onlinebeamsandroidapp.adminFragments.ItemsFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var binding: ActivityMainBinding
-    private val homeFragment = HomeFragment()
+    private val editFragment = EditFragment()
     private val addFragment = AddFragment()
     private val itemsFragment = ItemsFragment()
     private val descriptonFragment = DescriptionFragment()
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(homeFragment)
+        replaceFragment(editFragment)
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
                 }
 
                 R.id.home -> {
-                    replaceFragment(homeFragment)
+                    replaceFragment(editFragment)
                 }
 
                 R.id.logOut -> {

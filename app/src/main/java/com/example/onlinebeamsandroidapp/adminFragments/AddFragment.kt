@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.databinding.FragmentAddBinding
-import com.example.onlinebeamsandroidapp.databinding.FragmentDescriptionBinding
 
 class AddFragment : Fragment() {
     private lateinit var binding: FragmentAddBinding
-    var homeFragment=HomeFragment()
+    var editFragment=EditFragment()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,7 +25,7 @@ class AddFragment : Fragment() {
 
         binding.cancelBtn.setOnClickListener {
             val transaction=fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, homeFragment)
+            transaction?.replace(R.id.fragment_container, editFragment)
             transaction?.commit()
         }
         return binding.root
