@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onlinebeamsandroidapp.CategoryClassOB
+import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.adaptors.CategoryAdaptor
 import com.example.onlinebeamsandroidapp.databinding.FragmentCategoryBinding
@@ -15,13 +16,14 @@ import com.example.onlinebeamsandroidapp.databinding.FragmentCategoryBinding
 class CategoryFragment : Fragment() {
 
     private lateinit var binding: FragmentCategoryBinding
-    private lateinit var categoryRecycleView: RecyclerView
+    private lateinit var communicator: FragmentCommunicator
     private lateinit var categoryArrayList: ArrayList<CategoryClassOB>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
+        communicator=activity as FragmentCommunicator
         binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerView.setHasFixedSize(true)
         categoryArrayList = arrayListOf<CategoryClassOB>()
@@ -38,7 +40,7 @@ class CategoryFragment : Fragment() {
         addAdaptor.setOnCategoryClickListener(
             object : CategoryAdaptor.onCategoryClickListener {
                 override fun onItemClick(position: Int) {
-                    fragmentManager!!.beginTransaction().replace(R.id.fragment_container,ItemsFragment()).commit()
+                    communicator.passData(categoryArrayList[position].category_Name,ItemsFragment())
                 }
 
             }
