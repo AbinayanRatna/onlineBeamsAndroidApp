@@ -16,11 +16,11 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddBinding.inflate(inflater, container, false)
-        var output = arguments?.getString("message").toString()
+        val output = arguments?.getString("message").toString()
         if (output == "Description Not Available") {
-            binding.tvDescriptionAdded.text = "Description not added"
+            binding.tvDescriptionAdded.text = getString(R.string.description_not_added)
         } else {
-            binding.tvDescriptionAdded.text = "Description added"
+            binding.tvDescriptionAdded.text = getString(R.string.description_added)
         }
 
         binding.cancelBtn.setOnClickListener {

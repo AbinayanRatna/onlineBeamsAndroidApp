@@ -1,14 +1,14 @@
 package com.example.onlinebeamsandroidapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.onlinebeamsandroidapp.databinding.ActivityMainBinding
 import com.example.onlinebeamsandroidapp.adminFragments.AddFragment
 import com.example.onlinebeamsandroidapp.adminFragments.CategoryFragment
 import com.example.onlinebeamsandroidapp.adminFragments.DescriptionFragment
 import com.example.onlinebeamsandroidapp.adminFragments.EditFragment
 import com.example.onlinebeamsandroidapp.adminFragments.ItemsFragment
+import com.example.onlinebeamsandroidapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), FragmentCommunicator {
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
                 }
 
                 R.id.home -> {
-                    replaceFragment(editFragment)
+                    replaceFragment(categoryFragment)
                 }
 
                 R.id.logOut -> {
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         }
     }
 
-    override fun passData(editTextData: String?,fragment: Fragment) {
+    override fun passData(editTextData: String?, fragment: Fragment) {
         val empty: String = "Description Not Available"
         val bundle = Bundle()
         if (editTextData == "") {
