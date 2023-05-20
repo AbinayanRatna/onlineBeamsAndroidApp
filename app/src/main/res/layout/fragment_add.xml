@@ -190,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:checked="false"
-                        android:text="Kitchen tool"
+                        android:text="Kitchen Tool"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
                 </RadioGroup>

@@ -6,16 +6,26 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.example.onlinebeamsandroidapp.CategoryClassOB
+import com.example.onlinebeamsandroidapp.ItemClass
 import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.databinding.FragmentAddBinding
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
+import java.util.UUID
 
 class AddFragment : Fragment() {
     private lateinit var binding: FragmentAddBinding
-    var editFragment=EditFragment()
+    private lateinit var databaseRef: DatabaseReference
+    var typeSelectButton: String = ""
+    var editFragment = EditFragment()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,21 +38,48 @@ class AddFragment : Fragment() {
             binding.tvDescriptionAdded.text = getString(R.string.description_added)
         }
 
+        binding.babyCareRdbtn.setOnClickListener {
+            typeSelectButton = binding.babyCareRdbtn.text.toString()
+        }
+        binding.cosmeticsRdbtn.setOnClickListener {
+            typeSelectButton = binding.cosmeticsRdbtn.text.toString()
+        }
+        binding.electronicRdbtn.setOnClickListener {
+            typeSelectButton = binding.electronicRdbtn.text.toString()
+        }
+        binding.otherRdbtn.setOnClickListener {
+            typeSelectButton = binding.otherRdbtn.text.toString()
+        }
+        binding.lightsRdbtn.setOnClickListener {
+            typeSelectButton = binding.lightsRdbtn.text.toString()
+        }
+        binding.powertoolRdbtn.setOnClickListener {
+            typeSelectButton = binding.powertoolRdbtn.text.toString()
+        }
+        binding.kitchenRdbtn.setOnClickListener {
+            typeSelectButton = binding.kitchenRdbtn.text.toString()
+        }
+
         binding.cancelBtn.setOnClickListener {
-            val transaction=fragmentManager?.beginTransaction()
+            val transaction = fragmentManager?.beginTransaction()
             transaction?.replace(R.id.fragment_container, editFragment)
             transaction?.commit()
         }
 
         binding.selectImageBtn.setOnClickListener {
-            val intent=Intent(Intent.ACTION_PICK)
+            val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, 0)
+        }
+
+        binding.proceedBtn.setOnClickListener {
+            saveDataToDatabase()
         }
         return binding.root
 
 
     }
+
     var selectedImageUri: Uri? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -50,11 +87,84 @@ class AddFragment : Fragment() {
 
         if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
             selectedImageUri = data.data
-            val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, selectedImageUri)
+            val bitmap =
+                MediaStore.Images.Media.getBitmap(activity?.contentResolver, selectedImageUri)
             val bitmapDrawable = BitmapDrawable(bitmap)
             binding.addImage.setBackgroundDrawable(bitmapDrawable)
 
         }
+    }
+
+    fun saveDataToDatabase() {
+        val itemName = binding.nameEditText.text.toString()
+        val itemWarrenty = binding.warrentyEditText.text.toString()
+        val itemPrice = binding.priceEditText.text.toString()
+        var imgUrl=""
+        val output = arguments?.getString("message").toString()
+
+        when (typeSelectButton) {
+            "Electronic" -> {
+                databaseRef = FirebaseDatabase.getInstance().getReference("Electronic")
+            }
+
+            "Power Tool" -> {
+                databaseRef = FirebaseDatabase.getInstance().getReference("PowerTool")
+            }
+
+            "Kitchen Tool" -> {
+                databaseRef = FirebaseDatabase.getInstance().getReference("KitchenTool")
+            }
+
+            "Baby care" -> {
+                databaseRef = FirebaseDatabase.getInstance().getReference("BabyCare")
+            }
+
+            "Cosmetics" -> {
+                databaseRef = FirebaseDatabase.getInstance().getReference("Cosmetics")
+            }
+
+            "Lights" -> {
+                databaseRef = FirebaseDatabase.getInstance().getReference("Lights")
+            }
+
+            else -> {
+                databaseRef = FirebaseDatabase.getInstance().getReference("Others")
+            }
+        }
+
+        val itemId=databaseRef.push().key
+
+        if (selectedImageUri == null) return
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/image/$filename")
+        ref.putFile(selectedImageUri!!)
+            .addOnSuccessListener { taskSnapshot ->
+                Toast.makeText(activity, "Wait.Saving Process will take some time.", Toast.LENGTH_SHORT)
+                    .show()
+                taskSnapshot.metadata!!.reference!!.downloadUrl
+                    .addOnSuccessListener { uri ->
+                        imgUrl = uri.toString()
+                        val product =
+                            ItemClass(itemId,itemName,imgUrl,itemWarrenty,output,itemPrice)
+                        databaseRef.child(itemId!!).setValue(product).addOnSuccessListener {
+
+
+                            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,ItemsFragment())?.commit()
+                            Toast.makeText(activity, "Details saved", Toast.LENGTH_SHORT).show()
+
+                        }.addOnFailureListener {
+
+                            Toast.makeText(activity, "Failed to save", Toast.LENGTH_SHORT).show()
+
+
+                        }
+                    }
+            }.addOnFailureListener {
+                Toast.makeText(activity, "Failed to attach image to database", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+
     }
 
 
