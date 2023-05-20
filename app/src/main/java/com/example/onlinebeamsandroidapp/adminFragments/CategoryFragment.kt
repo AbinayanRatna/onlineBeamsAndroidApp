@@ -27,7 +27,7 @@ class CategoryFragment : Fragment() {
         categoryArrayList = arrayListOf<CategoryClassOB>()
         categoryArrayList.add(CategoryClassOB("Electronics", R.drawable.baseline_home))
         categoryArrayList.add(CategoryClassOB("Power Tools", R.drawable.baseline_home))
-        categoryArrayList.add(CategoryClassOB("Kitchen tools and utensils", R.drawable.baseline_home))
+        categoryArrayList.add(CategoryClassOB("Kitchen tools & utensils", R.drawable.baseline_home))
         categoryArrayList.add(CategoryClassOB("Baby care & toys", R.drawable.baseline_home))
         categoryArrayList.add(CategoryClassOB("Cosmetics", R.drawable.baseline_home))
         categoryArrayList.add(CategoryClassOB("Lights", R.drawable.baseline_home))

@@ -42,7 +42,7 @@
                     android:layout_width="180dp"
                     android:layout_height="180dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/baseline_home" />
+                    android:background="@drawable/baseline_home" />
 
             </androidx.cardview.widget.CardView>
 
