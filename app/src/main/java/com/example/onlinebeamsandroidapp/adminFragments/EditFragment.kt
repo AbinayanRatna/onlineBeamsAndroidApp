@@ -19,7 +19,14 @@ class EditFragment : Fragment() {
         binding = FragmentEditBinding.inflate(inflater, container, false)
         val output1 = arguments?.getString("message").toString()
         val output2 = arguments?.getString("message2").toString()
+        val output3 = arguments?.getString("message3").toString()
+        val output4 = arguments?.getString("message4").toString()
+        val output5 = arguments?.getString("message5").toString()
+        val output6 = arguments?.getString("message6").toString()
 
+        binding.nameEditText.setText(output4)
+        binding.warrentyEditText.setText(output5)
+        binding.priceEditText.setText(output6)
 
         return binding.root
     }

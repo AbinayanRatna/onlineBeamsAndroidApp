@@ -22,7 +22,7 @@
             android:id="@+id/tvHeading"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/add_item"
+            android:text="Edit Item"
             android:textColor="@color/black"
             android:textSize="30dp" />
 
@@ -34,7 +34,10 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
                 app:cardCornerRadius="150dp">
 
 
@@ -53,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/white"
-                android:text="@string/addImage"
+                android:text="Update Image"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -155,8 +158,9 @@
 
         <TextView
             android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
-            android:text="Description added"
+            android:text="Description Updated"
             android:textSize="20sp"
             android:textColorHint="@color/black"
             android:gravity="center"
@@ -170,8 +174,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/proceed_btn"
-                android:text="Proceed"
+                android:id="@+id/update_btn"
+                android:text="Update"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:backgroundTint="@color/white"
@@ -182,8 +186,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/cancel_btn"
-                android:text="Cancel"
+                android:id="@+id/delete_btn"
+                android:text="Delete"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:backgroundTint="@color/white"

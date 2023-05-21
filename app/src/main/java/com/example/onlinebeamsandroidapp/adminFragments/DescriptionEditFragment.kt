@@ -13,11 +13,13 @@ import com.example.onlinebeamsandroidapp.databinding.FragmentDescriptionEditBind
 
 class DescriptionEditFragment : Fragment() {
     private lateinit var binding: FragmentDescriptionBinding
+    private lateinit var communicator: FragmentCommunicator
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDescriptionBinding.inflate(inflater, container, false)
+        communicator=activity as FragmentCommunicator
         binding.tvDescriptionHeading.text="Edit Description"
         binding.descriptionNextBtn.text="Update"
         binding.descriptionCancelBtn.setOnClickListener {
@@ -31,6 +33,10 @@ class DescriptionEditFragment : Fragment() {
         val output6 = arguments?.getString("message6").toString()
 
         binding.etDescription.setText(output3)
+
+        binding.descriptionNextBtn.setOnClickListener {
+            communicator.passData(output1,output2,binding.etDescription.text.toString(),output4,output5,output6,EditFragment())
+        }
         return binding.root
     }
 
