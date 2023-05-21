@@ -26,7 +26,7 @@ class DescriptionFragment : Fragment() {
         binding = FragmentDescriptionBinding.inflate(inflater, container, false)
         communicator = activity as FragmentCommunicator
         binding.descriptionNextBtn.setOnClickListener {
-            communicator.passData(binding.etDescription.text.toString(), addFragment)
+            communicator.passData(binding.etDescription.text.toString(),"","","","","", addFragment)
             Toast.makeText(activity, "Description Added", Toast.LENGTH_SHORT).show()
         }
 

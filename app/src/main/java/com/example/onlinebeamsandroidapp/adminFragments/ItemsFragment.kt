@@ -1,17 +1,13 @@
 package com.example.onlinebeamsandroidapp.adminFragments
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.ItemClass
-import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.adaptors.ItemAdaptors
 import com.example.onlinebeamsandroidapp.databinding.FragmentItemsBinding
 import com.google.firebase.database.DataSnapshot
@@ -23,22 +19,24 @@ import com.google.firebase.database.ValueEventListener
 
 class ItemsFragment : Fragment() {
 
-    private lateinit var binding:FragmentItemsBinding
-    private lateinit var databaseRef:DatabaseReference
-    private lateinit var itemArrayList:ArrayList<ItemClass>
+    private lateinit var binding: FragmentItemsBinding
+    private lateinit var communicator: FragmentCommunicator
+    private lateinit var databaseRef: DatabaseReference
+    private lateinit var itemArrayList: ArrayList<ItemClass>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentItemsBinding.inflate(inflater,container,false)
-        binding.recyclerView.layoutManager=LinearLayoutManager(activity)
+        binding = FragmentItemsBinding.inflate(inflater, container, false)
+        communicator = activity as FragmentCommunicator
+        binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.setHasFixedSize(true)
-        itemArrayList= arrayListOf<ItemClass>()
+        itemArrayList = arrayListOf<ItemClass>()
         getUserData()
         return binding.root
     }
 
-    private fun getUserData(){
+    private fun getUserData() {
         val output = arguments?.getString("message").toString()
         var category: String = ""
         when (output) {
@@ -46,38 +44,44 @@ class ItemsFragment : Fragment() {
                 databaseRef = FirebaseDatabase.getInstance().getReference("Electronic")
                 category = "Electronic"
             }
+
             "Power Tools" -> {
                 databaseRef = FirebaseDatabase.getInstance().getReference("PowerTool")
                 category = "PowerTool"
             }
+
             "Kitchen tools & utensils" -> {
                 databaseRef = FirebaseDatabase.getInstance().getReference("KitchenTool")
                 category = "KitchenTool"
             }
+
             "Baby care & toys" -> {
-                databaseRef= FirebaseDatabase.getInstance().getReference("BabyCare")
+                databaseRef = FirebaseDatabase.getInstance().getReference("BabyCare")
                 category = "BabyCare"
             }
+
             "Cosmetics" -> {
                 databaseRef = FirebaseDatabase.getInstance().getReference("Cosmetics")
                 category = "Cosmetics"
             }
+
             "Lights" -> {
                 databaseRef = FirebaseDatabase.getInstance().getReference("Lights")
                 category = "Lights"
             }
+
             else -> {
                 databaseRef = FirebaseDatabase.getInstance().getReference("Others")
                 category = "Others"
             }
         }
 
-        Log.i("Firebase image URL", "date8")
+
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.i("Firebase image URL", "date8")
+
                 if (snapshot.exists()) {
-                    Log.i("Firebase image URL", "date8")
+
                     for (userSnapshot in snapshot.children) {
 
                         val item = userSnapshot.getValue(ItemClass::class.java)
@@ -86,31 +90,16 @@ class ItemsFragment : Fragment() {
                     }
                     val mAdapter = ItemAdaptors(itemArrayList, activity!!)
                     binding.recyclerView.adapter = mAdapter
-/*
-                    mAdapter.setOnItemClickListener(object : itemAdaptor.onItemClickListener {
+
+                    mAdapter.setOnItemClickListener(object : ItemAdaptors.onItemClickListener {
                         override fun onItemClick(position: Int) {
-
-                            val intent = Intent(this@AdminViewItems, AdminEditData::class.java)
-
-
-                            intent.putExtra("name", empList[position].nameOfProduct)
-                            intent.putExtra("category", category)
-                            intent.putExtra("id", empList[position].id)
-                            intent.putExtra("priceOfProduct", empList[position].priceOfProduct)
-                            intent.putExtra(
-                                "districtOfProduct",
-                                empList[position].districtOfProduct
-                            )
-                            intent.putExtra("image", empList[position].image)
-
-                            startActivity(intent)
-
+                            communicator.passData(itemArrayList[position].item_Id, category,itemArrayList[position].item_Descrip,itemArrayList[position].item_Name,itemArrayList[position].item_Warrenty,itemArrayList[position].item_Price, DescriptionEditFragment())
 
                         }
 
                     })
 
-*/
+
                 }
 
             }

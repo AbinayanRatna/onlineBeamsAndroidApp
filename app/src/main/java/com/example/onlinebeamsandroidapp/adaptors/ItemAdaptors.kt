@@ -12,10 +12,25 @@ import com.example.onlinebeamsandroidapp.ItemClass
 import com.example.onlinebeamsandroidapp.R
 
 class ItemAdaptors(val itemList:ArrayList<ItemClass>,private val context: Context):RecyclerView.Adapter<ItemAdaptors.myViewHolder>() {
-    class myViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    private lateinit var mListener:onItemClickListener
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: onItemClickListener){
+        mListener=clickListener
+    }
+
+    class myViewHolder(itemView: View,clickListener: onItemClickListener): RecyclerView.ViewHolder(itemView) {
         val itemName = itemView.findViewById<TextView>(R.id.itemNameTV)
         val itemPrice=itemView.findViewById<TextView>(R.id.itemPriceTV)
         val itemImage=itemView.findViewById<ImageView>(R.id.imgItem)
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdaptors.myViewHolder {
@@ -23,7 +38,7 @@ class ItemAdaptors(val itemList:ArrayList<ItemClass>,private val context: Contex
             R.layout.itemcardview,
             parent, false
         )
-        return ItemAdaptors.myViewHolder(itemView)
+        return myViewHolder(itemView,mListener)
     }
 
     override fun onBindViewHolder(holder: ItemAdaptors.myViewHolder, position: Int) {

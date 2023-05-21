@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(editFragment)
+        replaceFragment(CategoryFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         }
     }
 
-    override fun passData(editTextData: String?, fragment: Fragment) {
+    override fun passData(editTextData: String?,editTextData2: String?,editTextData3: String?,editTextData4: String?,editTextData5: String?,editTextData6: String?, fragment: Fragment) {
         val empty: String = "Description Not Available"
         val bundle = Bundle()
         if (editTextData == "") {
@@ -60,9 +60,15 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         } else {
             bundle.putString("message", editTextData)
         }
+        bundle.putString("message2",editTextData2)
+        bundle.putString("message3",editTextData3)
+        bundle.putString("message4",editTextData4)
+        bundle.putString("message5",editTextData5)
+        bundle.putString("message6",editTextData6)
         val transaction = supportFragmentManager.beginTransaction()
         fragment.arguments = bundle
         transaction.replace(R.id.fragment_container, fragment).commit()
 
     }
+
 }
