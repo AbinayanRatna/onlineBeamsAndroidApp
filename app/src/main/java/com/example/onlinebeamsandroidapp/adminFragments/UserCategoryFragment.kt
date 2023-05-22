@@ -49,7 +49,7 @@ class UserCategoryFragment : Fragment() {
                         "",
                         "",
                         "",
-                        ItemsFragment()
+                        UserItemFragment()
                     )
                 }
 

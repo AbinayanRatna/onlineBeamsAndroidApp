@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.databinding.FragmentViewBinding
 
 
-class ViewFragment : Fragment() {
+class UserViewFragment : Fragment() {
     private lateinit var binding: FragmentViewBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

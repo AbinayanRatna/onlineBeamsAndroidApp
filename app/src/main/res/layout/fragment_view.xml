@@ -1,14 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminFragments.ViewFragment">
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".adminFragments.UserViewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/itemNameShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="Rts 100 laptop light"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/baseline_home" />
+
+                <TextView
+                    android:id="@+id/itemPriceShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="40dp"
+                    android:text="30000"
+                    android:textColor="@color/black"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/itemWarrentyShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="40dp"
+                    android:text="3 months warrenty seller"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/itemDescriptionShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:text="3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller3 months warrenty seller"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="italic" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:text="proceed"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:text="cancel"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
