@@ -9,6 +9,7 @@ import com.example.onlinebeamsandroidapp.adminFragments.CategoryFragment
 import com.example.onlinebeamsandroidapp.adminFragments.DescriptionFragment
 import com.example.onlinebeamsandroidapp.adminFragments.EditFragment
 import com.example.onlinebeamsandroidapp.adminFragments.ItemsFragment
+import com.example.onlinebeamsandroidapp.adminFragments.UserCategoryFragment
 import com.example.onlinebeamsandroidapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), FragmentCommunicator {
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(CategoryFragment())
+        replaceFragment(UserCategoryFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
