@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.onlinebeamsandroidapp.CategoryClassOB
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.R
@@ -23,7 +22,7 @@ class CategoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
-        communicator=activity as FragmentCommunicator
+        communicator = activity as FragmentCommunicator
         binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerView.setHasFixedSize(true)
         categoryArrayList = arrayListOf<CategoryClassOB>()
@@ -40,7 +39,16 @@ class CategoryFragment : Fragment() {
         addAdaptor.setOnCategoryClickListener(
             object : CategoryAdaptor.onCategoryClickListener {
                 override fun onItemClick(position: Int) {
-                    communicator.passData(categoryArrayList[position].category_Name,"","","","","","",ItemsFragment())
+                    communicator.passData(
+                        categoryArrayList[position].category_Name,
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ItemsFragment()
+                    )
                 }
 
             }

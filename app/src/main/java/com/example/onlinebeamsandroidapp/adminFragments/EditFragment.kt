@@ -1,18 +1,14 @@
 package com.example.onlinebeamsandroidapp.adminFragments
 
 import android.app.Activity
-import android.app.Application
-import android.app.ProgressDialog.show
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
@@ -51,7 +47,7 @@ class EditFragment : Fragment() {
             dataAdd()
         }
         binding.deleteBtn.setOnClickListener {
-           deleteData()
+            deleteData()
         }
         binding.selectImageBtn.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
@@ -102,7 +98,8 @@ class EditFragment : Fragment() {
                                     itemPrice,
                                     image
                                 )
-                                fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())?.commit()
+                                fragmentManager?.beginTransaction()
+                                    ?.replace(R.id.fragment_container, CategoryFragment())?.commit()
                                 communicator.toastMake("Successfully Updated")
 
                             }
@@ -112,10 +109,12 @@ class EditFragment : Fragment() {
                 val image = itemImage
                 communicator.toastMake("Photo saved")
                 updateData(itemId, itemName, itemDescription, itemWarrenty, itemPrice, image)
-                fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())?.commit()
+                fragmentManager?.beginTransaction()
+                    ?.replace(R.id.fragment_container, CategoryFragment())?.commit()
                 communicator.toastMake("Successfully Updated")
             }
-        }    }
+        }
+    }
 
     private fun updateData(
         itemId: String,
@@ -147,24 +146,26 @@ class EditFragment : Fragment() {
 
     }
 
-    private fun deleteData(){
+    private fun deleteData() {
         val categoryText = arguments?.getString("message2").toString()
         val itemId = arguments?.getString("message").toString()
         databaseRef = FirebaseDatabase.getInstance().getReference(categoryText!!)
         databaseRef.child(itemId).get().addOnSuccessListener {
             databaseRef.child(itemId).removeValue().addOnSuccessListener {
 
-                    communicator.toastMake("Successfully deleted")
+                communicator.toastMake("Successfully deleted")
 
-                fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())?.commit()
+                fragmentManager?.beginTransaction()
+                    ?.replace(R.id.fragment_container, CategoryFragment())?.commit()
 
 
             }.addOnFailureListener {
-                               communicator.toastMake("Errors in deleting the data.")
+                communicator.toastMake("Errors in deleting the data.")
             }
 
         }
-        fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())?.commit()
+        fragmentManager?.beginTransaction()?.replace(R.id.fragment_container, CategoryFragment())
+            ?.commit()
     }
 
 }

@@ -17,9 +17,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tvHeading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvHeading"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/add_item"
@@ -42,8 +42,8 @@
                     android:id="@+id/addImage"
                     android:layout_width="180dp"
                     android:layout_height="180dp"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/baseline_home" />
+                    android:background="@drawable/baseline_home"
+                    android:scaleType="centerCrop" />
 
             </androidx.cardview.widget.CardView>
 
@@ -74,12 +74,12 @@
             android:layout_marginLeft="15dp"
             android:background="@drawable/textbackground"
             android:gravity="center"
+            android:hint="name"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:singleLine="true"
-            android:hint="name"
-            android:textColorHint="@color/black"
             android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:textSize="20dp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -103,12 +103,12 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/textbackground"
                 android:gravity="center"
+                android:hint="Warrenty"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:singleLine="true"
-                android:hint="Warrenty"
-                android:textColorHint="@color/black"
                 android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="20dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -134,12 +134,12 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/textbackground"
                 android:gravity="center"
+                android:hint="price"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:singleLine="true"
-                android:textColorHint="@color/black"
-                android:hint="price"
                 android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="20dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -256,13 +256,13 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <TextView
+            android:id="@+id/tvDescriptionAdded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description added"
-            android:textSize="20sp"
-            android:textColorHint="@color/black"
             android:gravity="center"
-            android:id="@+id/tvDescriptionAdded"/>
+            android:text="Description added"
+            android:textColorHint="@color/black"
+            android:textSize="20sp" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -270,29 +270,29 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/proceed_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/proceed_btn"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:text="Proceed"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:backgroundTint="@color/white"
-                android:layout_weight="1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp" />
+                android:textSize="20sp" />
 
             <Button
+                android:id="@+id/cancel_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/cancel_btn"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:text="Cancel"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                android:backgroundTint="@color/white"
-                android:layout_weight="1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp" />
+                android:textSize="20sp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

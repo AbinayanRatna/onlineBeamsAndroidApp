@@ -6,11 +6,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.ItemClass
@@ -32,7 +30,7 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddBinding.inflate(inflater, container, false)
-        communicator=activity as FragmentCommunicator
+        communicator = activity as FragmentCommunicator
         val output = arguments?.getString("message").toString()
         if (output == "Description Not Available") {
             binding.tvDescriptionAdded.text = getString(R.string.description_not_added)

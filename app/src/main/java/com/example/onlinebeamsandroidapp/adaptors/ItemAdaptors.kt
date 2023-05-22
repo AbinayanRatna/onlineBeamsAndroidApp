@@ -1,6 +1,5 @@
 package com.example.onlinebeamsandroidapp.adaptors
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,20 +11,23 @@ import com.bumptech.glide.Glide
 import com.example.onlinebeamsandroidapp.ItemClass
 import com.example.onlinebeamsandroidapp.R
 
-class ItemAdaptors(val itemList:ArrayList<ItemClass>,val fragment:Fragment):RecyclerView.Adapter<ItemAdaptors.myViewHolder>() {
-    private lateinit var mListener:onItemClickListener
-    interface onItemClickListener{
+class ItemAdaptors(val itemList: ArrayList<ItemClass>, val fragment: Fragment) :
+    RecyclerView.Adapter<ItemAdaptors.myViewHolder>() {
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener {
         fun onItemClick(position: Int)
     }
 
-    fun setOnItemClickListener(clickListener: onItemClickListener){
-        mListener=clickListener
+    fun setOnItemClickListener(clickListener: onItemClickListener) {
+        mListener = clickListener
     }
 
-    class myViewHolder(itemView: View,clickListener: onItemClickListener): RecyclerView.ViewHolder(itemView) {
+    class myViewHolder(itemView: View, clickListener: onItemClickListener) :
+        RecyclerView.ViewHolder(itemView) {
         val itemName = itemView.findViewById<TextView>(R.id.itemNameTV)
-        val itemPrice=itemView.findViewById<TextView>(R.id.itemPriceTV)
-        val itemImage=itemView.findViewById<ImageView>(R.id.imgItem)
+        val itemPrice = itemView.findViewById<TextView>(R.id.itemPriceTV)
+        val itemImage = itemView.findViewById<ImageView>(R.id.imgItem)
 
         init {
             itemView.setOnClickListener {
@@ -39,13 +41,13 @@ class ItemAdaptors(val itemList:ArrayList<ItemClass>,val fragment:Fragment):Recy
             R.layout.itemcardview,
             parent, false
         )
-        return myViewHolder(itemView,mListener)
+        return myViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: ItemAdaptors.myViewHolder, position: Int) {
-        val currentItem=itemList[position]
-        holder.itemName.text=currentItem.item_Name
-        holder.itemPrice.text=currentItem.item_Price
+        val currentItem = itemList[position]
+        holder.itemName.text = currentItem.item_Name
+        holder.itemPrice.text = currentItem.item_Price
         Glide.with(fragment)
             .load(itemList[position].item_Image)
             .into(holder.itemImage)

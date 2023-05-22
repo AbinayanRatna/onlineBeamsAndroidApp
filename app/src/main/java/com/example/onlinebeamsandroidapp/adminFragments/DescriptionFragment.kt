@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.R
@@ -26,7 +25,16 @@ class DescriptionFragment : Fragment() {
         binding = FragmentDescriptionBinding.inflate(inflater, container, false)
         communicator = activity as FragmentCommunicator
         binding.descriptionNextBtn.setOnClickListener {
-            communicator.passData(binding.etDescription.text.toString(),"","","","","","", addFragment)
+            communicator.passData(
+                binding.etDescription.text.toString(),
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                addFragment
+            )
             communicator.toastMake("Description Added")
         }
 

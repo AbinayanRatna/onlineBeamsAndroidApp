@@ -23,7 +23,7 @@ class CategoryAdaptor(private val categoryList: ArrayList<CategoryClassOB>) :
     }
 
 
-    class myViewHolder(itemView: View,clickListener: onCategoryClickListener) :
+    class myViewHolder(itemView: View, clickListener: onCategoryClickListener) :
         RecyclerView.ViewHolder(itemView) {
         val categroyName = itemView.findViewById<TextView>(R.id.categoryNameTV)
         val categoryImage = itemView.findViewById<ImageView>(R.id.categoryImg)
@@ -43,7 +43,7 @@ class CategoryAdaptor(private val categoryList: ArrayList<CategoryClassOB>) :
             R.layout.categorycardview,
             parent, false
         )
-        return myViewHolder(itemView,mListener)
+        return myViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: CategoryAdaptor.myViewHolder, position: Int) {

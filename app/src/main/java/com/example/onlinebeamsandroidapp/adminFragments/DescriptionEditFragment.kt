@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.databinding.FragmentDescriptionBinding
-import com.example.onlinebeamsandroidapp.databinding.FragmentDescriptionEditBinding
 
 
 class DescriptionEditFragment : Fragment() {
@@ -19,11 +18,12 @@ class DescriptionEditFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDescriptionBinding.inflate(inflater, container, false)
-        communicator=activity as FragmentCommunicator
-        binding.tvDescriptionHeading.text="Edit Description"
-        binding.descriptionNextBtn.text="Update"
+        communicator = activity as FragmentCommunicator
+        binding.tvDescriptionHeading.text = "Edit Description"
+        binding.descriptionNextBtn.text = "Update"
         binding.descriptionCancelBtn.setOnClickListener {
-            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, CategoryFragment())
         }
         val output1 = arguments?.getString("message").toString()
         val output2 = arguments?.getString("message2").toString()
@@ -36,7 +36,16 @@ class DescriptionEditFragment : Fragment() {
         binding.etDescription.setText(output3)
 
         binding.descriptionNextBtn.setOnClickListener {
-            communicator.passData(output1,output2,binding.etDescription.text.toString(),output4,output5,output6,output7,EditFragment())
+            communicator.passData(
+                output1,
+                output2,
+                binding.etDescription.text.toString(),
+                output4,
+                output5,
+                output6,
+                output7,
+                EditFragment()
+            )
         }
         return binding.root
     }

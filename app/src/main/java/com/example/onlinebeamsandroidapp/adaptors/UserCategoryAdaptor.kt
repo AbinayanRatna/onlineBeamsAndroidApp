@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide.init
 import com.example.onlinebeamsandroidapp.CategoryClassOB
 import com.example.onlinebeamsandroidapp.R
 
@@ -22,7 +21,8 @@ class UserCategoryAdaptor(private val categoryList: ArrayList<CategoryClassOB>) 
         mListener = clickListener
     }
 
-    class myViewHolder(itemView: View,clickListener:onCategoryClickListener) : RecyclerView.ViewHolder(itemView) {
+    class myViewHolder(itemView: View, clickListener: onCategoryClickListener) :
+        RecyclerView.ViewHolder(itemView) {
         val categoryImage = itemView.findViewById<ImageView>(R.id.categoryImg)
         val categoryName = itemView.findViewById<TextView>(R.id.categoryNameTV)
 
@@ -40,7 +40,7 @@ class UserCategoryAdaptor(private val categoryList: ArrayList<CategoryClassOB>) 
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.categorycardview, parent, false
         )
-        return myViewHolder(itemView,mListener)
+        return myViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: UserCategoryAdaptor.myViewHolder, position: Int) {
