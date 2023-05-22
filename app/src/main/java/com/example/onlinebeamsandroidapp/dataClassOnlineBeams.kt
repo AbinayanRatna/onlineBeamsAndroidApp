@@ -13,3 +13,13 @@ data class ItemClass(
     val item_Descrip: String? = "",
     val item_Price: String? = ""
 )
+
+data class CartClass(
+    val item_Id: String? = "",
+    val item_Name: String? = "",
+    val item_Image: String? = "",
+    val item_Warrenty: String? = "",
+    val item_Descrip: String? = "",
+    val item_Price: String? = "",
+    val item_count:Int?=0
+)

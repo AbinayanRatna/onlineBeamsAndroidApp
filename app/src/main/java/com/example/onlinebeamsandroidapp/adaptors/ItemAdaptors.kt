@@ -49,7 +49,7 @@ class ItemAdaptors(val itemList: ArrayList<ItemClass>, val fragment: Fragment) :
         holder.itemName.text = currentItem.item_Name
         holder.itemPrice.text = currentItem.item_Price
         Glide.with(fragment)
-            .load(itemList[position].item_Image)
+            .load(currentItem.item_Image)
             .into(holder.itemImage)
     }
 

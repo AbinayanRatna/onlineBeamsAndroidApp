@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(UserViewFragment())
+        replaceFragment(UserCategoryFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
