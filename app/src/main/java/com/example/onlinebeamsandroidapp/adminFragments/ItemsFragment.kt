@@ -1,6 +1,7 @@
 package com.example.onlinebeamsandroidapp.adminFragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -88,13 +89,12 @@ class ItemsFragment : Fragment() {
                         itemArrayList.add(item!!)
 
                     }
-                    val mAdapter = ItemAdaptors(itemArrayList, activity!!)
+                    val mAdapter = ItemAdaptors(itemArrayList, this@ItemsFragment)
                     binding.recyclerView.adapter = mAdapter
 
                     mAdapter.setOnItemClickListener(object : ItemAdaptors.onItemClickListener {
                         override fun onItemClick(position: Int) {
-                            communicator.passData(itemArrayList[position].item_Id, category,itemArrayList[position].item_Descrip,itemArrayList[position].item_Name,itemArrayList[position].item_Warrenty,itemArrayList[position].item_Price, DescriptionEditFragment())
-
+                            communicator.passData(itemArrayList[position].item_Id, category,itemArrayList[position].item_Descrip,itemArrayList[position].item_Name,itemArrayList[position].item_Warrenty,itemArrayList[position].item_Price,itemArrayList[position].item_Image, DescriptionEditFragment())
                         }
 
                     })

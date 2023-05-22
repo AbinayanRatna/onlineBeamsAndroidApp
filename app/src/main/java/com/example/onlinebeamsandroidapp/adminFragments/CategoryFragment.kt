@@ -40,7 +40,7 @@ class CategoryFragment : Fragment() {
         addAdaptor.setOnCategoryClickListener(
             object : CategoryAdaptor.onCategoryClickListener {
                 override fun onItemClick(position: Int) {
-                    communicator.passData(categoryArrayList[position].category_Name,"","","","","",ItemsFragment())
+                    communicator.passData(categoryArrayList[position].category_Name,"he","he","he","he","he","he",ItemsFragment())
                 }
 
             }

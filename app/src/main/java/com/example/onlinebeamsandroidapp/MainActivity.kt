@@ -1,6 +1,7 @@
 package com.example.onlinebeamsandroidapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.adminFragments.AddFragment
@@ -52,7 +53,11 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         }
     }
 
-    override fun passData(editTextData: String?,editTextData2: String?,editTextData3: String?,editTextData4: String?,editTextData5: String?,editTextData6: String?, fragment: Fragment) {
+    override fun toastMake(message:String) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun passData(editTextData: String?,editTextData2: String?,editTextData3: String?,editTextData4: String?,editTextData5: String?,editTextData6: String?,editTextData7: String?, fragment: Fragment) {
         val empty: String = "Description Not Available"
         val bundle = Bundle()
         if (editTextData == "") {
@@ -65,10 +70,12 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
         bundle.putString("message4",editTextData4)
         bundle.putString("message5",editTextData5)
         bundle.putString("message6",editTextData6)
+        bundle.putString("message7",editTextData7)
         val transaction = supportFragmentManager.beginTransaction()
         fragment.arguments = bundle
         transaction.replace(R.id.fragment_container, fragment).commit()
 
     }
+
 
 }

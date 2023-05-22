@@ -31,11 +31,12 @@ class DescriptionEditFragment : Fragment() {
         val output4 = arguments?.getString("message4").toString()
         val output5 = arguments?.getString("message5").toString()
         val output6 = arguments?.getString("message6").toString()
+        val output7 = arguments?.getString("message7").toString()
 
         binding.etDescription.setText(output3)
 
         binding.descriptionNextBtn.setOnClickListener {
-            communicator.passData(output1,output2,binding.etDescription.text.toString(),output4,output5,output6,EditFragment())
+            communicator.passData(output1,output2,binding.etDescription.text.toString(),output4,output5,output6,output7,EditFragment())
         }
         return binding.root
     }

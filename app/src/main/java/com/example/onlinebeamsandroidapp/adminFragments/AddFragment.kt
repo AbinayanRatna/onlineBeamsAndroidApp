@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.onlinebeamsandroidapp.CategoryClassOB
+import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.ItemClass
 import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.databinding.FragmentAddBinding
@@ -24,6 +24,7 @@ import java.util.UUID
 class AddFragment : Fragment() {
     private lateinit var binding: FragmentAddBinding
     private lateinit var databaseRef: DatabaseReference
+    private lateinit var communicator: FragmentCommunicator
     var typeSelectButton: String = ""
     var editFragment = EditFragment()
     override fun onCreateView(
@@ -31,6 +32,7 @@ class AddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAddBinding.inflate(inflater, container, false)
+        communicator=activity as FragmentCommunicator
         val output = arguments?.getString("message").toString()
         if (output == "Description Not Available") {
             binding.tvDescriptionAdded.text = getString(R.string.description_not_added)
@@ -99,7 +101,7 @@ class AddFragment : Fragment() {
         val itemName = binding.nameEditText.text.toString()
         val itemWarrenty = binding.warrentyEditText.text.toString()
         val itemPrice = binding.priceEditText.text.toString()
-        var imgUrl=""
+        var imgUrl = ""
         val output = arguments?.getString("message").toString()
 
         when (typeSelectButton) {
@@ -132,36 +134,34 @@ class AddFragment : Fragment() {
             }
         }
 
-        val itemId=databaseRef.push().key
-
+        val itemId = databaseRef.push().key
+        communicator.toastMake("Wait.Saving Process will take some time.")
         if (selectedImageUri == null) return
         val filename = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/image/$filename")
         ref.putFile(selectedImageUri!!)
             .addOnSuccessListener { taskSnapshot ->
-                Toast.makeText(activity, "Wait.Saving Process will take some time.", Toast.LENGTH_SHORT)
-                    .show()
+
                 taskSnapshot.metadata!!.reference!!.downloadUrl
                     .addOnSuccessListener { uri ->
                         imgUrl = uri.toString()
                         val product =
-                            ItemClass(itemId,itemName,imgUrl,itemWarrenty,output,itemPrice)
+                            ItemClass(itemId, itemName, imgUrl, itemWarrenty, output, itemPrice)
                         databaseRef.child(itemId!!).setValue(product).addOnSuccessListener {
 
-
-                            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,ItemsFragment())?.commit()
-                            Toast.makeText(activity, "Details saved", Toast.LENGTH_SHORT).show()
+                            fragmentManager?.beginTransaction()
+                                ?.replace(R.id.fragment_container, CategoryFragment())?.commit()
+                            communicator.toastMake("Details saved")
 
                         }.addOnFailureListener {
 
-                            Toast.makeText(activity, "Failed to save", Toast.LENGTH_SHORT).show()
+                            communicator.toastMake("Failed to save")
 
 
                         }
                     }
             }.addOnFailureListener {
-                Toast.makeText(activity, "Failed to attach image to database", Toast.LENGTH_SHORT)
-                    .show()
+                communicator.toastMake("Failed to attach image to database")
             }
 
 

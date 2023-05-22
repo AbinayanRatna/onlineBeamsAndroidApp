@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlinebeamsandroidapp.ItemClass
 import com.example.onlinebeamsandroidapp.R
 
-class ItemAdaptors(val itemList:ArrayList<ItemClass>,private val context: Context):RecyclerView.Adapter<ItemAdaptors.myViewHolder>() {
+class ItemAdaptors(val itemList:ArrayList<ItemClass>,val fragment:Fragment):RecyclerView.Adapter<ItemAdaptors.myViewHolder>() {
     private lateinit var mListener:onItemClickListener
     interface onItemClickListener{
         fun onItemClick(position: Int)
@@ -45,7 +46,7 @@ class ItemAdaptors(val itemList:ArrayList<ItemClass>,private val context: Contex
         val currentItem=itemList[position]
         holder.itemName.text=currentItem.item_Name
         holder.itemPrice.text=currentItem.item_Price
-        Glide.with(context)
+        Glide.with(fragment)
             .load(itemList[position].item_Image)
             .into(holder.itemImage)
     }
