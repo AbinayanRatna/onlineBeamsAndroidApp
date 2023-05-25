@@ -1,5 +1,8 @@
 package com.example.onlinebeamsandroidapp
 
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +13,8 @@ import com.example.onlinebeamsandroidapp.adminFragments.DescriptionFragment
 import com.example.onlinebeamsandroidapp.adminFragments.EditFragment
 import com.example.onlinebeamsandroidapp.adminFragments.ItemsFragment
 import com.example.onlinebeamsandroidapp.adminFragments.UserCategoryFragment
-import com.example.onlinebeamsandroidapp.adminFragments.UserViewFragment
 import com.example.onlinebeamsandroidapp.databinding.ActivityMainBinding
+import java.net.URLEncoder
 
 class MainActivity : AppCompatActivity(), FragmentCommunicator {
 
@@ -58,6 +61,21 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
     override fun toastMake(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
+    override fun sendWhatsappMessage(message: String) {
+            val number:String="+94775713207"
+            val packageManager : PackageManager = packageManager
+            val i = Intent(Intent.ACTION_VIEW)
+            val url = "https://api.whatsapp.com/send?phone=" + number + "&text="+ URLEncoder.encode(message,"UTF-8")
+            i.setPackage("com.whatsapp")
+            i.data = Uri.parse(url)
+            if(i.resolveActivity(packageManager) != null){
+                startActivity(i)
+            } else{
+            Toast.makeText(this,"Download the whatsapp app and then try again",Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     override fun passData(
         editTextData: String?,
