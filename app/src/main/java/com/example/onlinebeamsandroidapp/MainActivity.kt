@@ -69,7 +69,9 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
             val url = "https://api.whatsapp.com/send?phone=" + number + "&text="+ URLEncoder.encode(message,"UTF-8")
             i.setPackage("com.whatsapp")
             i.data = Uri.parse(url)
-            if(i.resolveActivity(packageManager) != null){
+
+
+        if(i.resolveActivity(packageManager) != null){
                 startActivity(i)
             } else{
             Toast.makeText(this,"Download the whatsapp app and then try again",Toast.LENGTH_SHORT).show()

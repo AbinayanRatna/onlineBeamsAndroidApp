@@ -1,5 +1,6 @@
 package com.example.onlinebeamsandroidapp
 
+import android.net.Uri
 import androidx.fragment.app.Fragment
 
 interface FragmentCommunicator {
