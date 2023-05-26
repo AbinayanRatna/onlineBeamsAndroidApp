@@ -91,15 +91,43 @@
             android:gravity="bottom|center"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnCartAdd"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:text="Add to cart"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:outlineProvider="none"
+                android:backgroundTint="@color/white">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="25dp"
+                    android:orientation="horizontal"
+                    android:background="@color/lightBlue">
+
+                    <Button
+                        android:id="@+id/btnAddAnother"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/baseline_add" />
+
+                    <TextView
+                        android:id="@+id/tvCount"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:gravity="center"
+                        android:text="0"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/btnReduceAnother"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/outline_remove" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btnbuyNow"

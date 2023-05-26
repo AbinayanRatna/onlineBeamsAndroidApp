@@ -1,7 +1,6 @@
 package com.example.onlinebeamsandroidapp.adminFragments
 
 import android.net.Uri
-import android.os.Build.VERSION_CODES.Q
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +16,7 @@ import com.example.onlinebeamsandroidapp.databinding.FragmentUserViewBinding
 class UserViewFragment : Fragment() {
     private lateinit var binding: FragmentUserViewBinding
     private lateinit var communicator: FragmentCommunicator
+    var count=0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,10 +41,26 @@ class UserViewFragment : Fragment() {
             fragmentManager?.beginTransaction()
                 ?.replace(R.id.fragment_container, UserCategoryFragment())?.commit()
         }
+binding.btnAddAnother.setOnClickListener {
+    count=binding.tvCount.text.toString().toInt()
+    count++
+    binding.tvCount.text=count.toString()
+}
+        binding.btnReduceAnother.setOnClickListener {
+            count=binding.tvCount.text.toString().toInt()
+            count--
 
-        binding.btnbuyNow.setOnClickListener {
-            communicator.sendWhatsappMessage(requireContext(),output7.toString(),output1.toString())
+            if(count<0){
+                count=0
+            }
+            binding.tvCount.text=count.toString()
         }
+        binding.btnbuyNow.setOnClickListener {
+            count=binding.tvCount.text.toString().toInt()
+            communicator.sendWhatsappMessage("Product name : ${output4!!} ,\n\n  count :  $count \n\n product image: \n${output7!!} \n\n I saw this on the official app. And I am interested.\n")
+        }
+
+
         return binding.root
     }
 
