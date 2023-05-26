@@ -1,6 +1,7 @@
 package com.example.onlinebeamsandroidapp.adminFragments
 
 import android.net.Uri
+import android.os.Build.VERSION_CODES.Q
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,7 @@ class UserViewFragment : Fragment() {
         }
 
         binding.btnbuyNow.setOnClickListener {
-            communicator.sendWhatsappMessage("Product name:- ${output4!!} ,\n productId:- $output1")
+            communicator.sendWhatsappMessage(requireContext(),output7.toString(),output1.toString())
         }
         return binding.root
     }

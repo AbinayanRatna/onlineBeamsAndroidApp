@@ -17,6 +17,12 @@
     android:text="hello"
     android:textSize="20sp"
     android:textColor="@color/black"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/igmView"
+        android:background="@color/black"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -2,11 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <queries>
-        <package android:name="com.whatsapp"/>
-    </queries>
-
     <application
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,9 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineBeamsAndroidApp"
         tools:targetApi="31">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.onlinebeamsandroidapp.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".MainActivity2"
             android:exported="true" >
+
         </activity>
         <activity
             android:name=".MainActivity"
