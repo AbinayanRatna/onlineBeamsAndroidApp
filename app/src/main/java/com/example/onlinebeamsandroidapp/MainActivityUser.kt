@@ -7,11 +7,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.onlinebeamsandroidapp.adminFragments.AddFragment
-import com.example.onlinebeamsandroidapp.adminFragments.CategoryFragment
-import com.example.onlinebeamsandroidapp.adminFragments.DescriptionFragment
-import com.example.onlinebeamsandroidapp.adminFragments.EditFragment
-import com.example.onlinebeamsandroidapp.adminFragments.ItemsFragment
 import com.example.onlinebeamsandroidapp.adminFragments.UserCategoryFragment
 import com.example.onlinebeamsandroidapp.databinding.ActivityMainUserBinding
 import java.net.URLEncoder

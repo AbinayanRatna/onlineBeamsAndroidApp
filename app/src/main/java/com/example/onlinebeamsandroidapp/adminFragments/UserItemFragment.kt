@@ -119,18 +119,6 @@ class UserItemFragment : Fragment() {
         })
 
     }
-    /*
-    private fun setUpBackPressed(){
-        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                if(isEnabled){
-                    isEnabled=false
-                    requireActivity().onBackPressed()
-                }
-            }
-        })
-    }
-    */
 
 }
 

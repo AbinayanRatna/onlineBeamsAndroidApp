@@ -21,5 +21,5 @@ data class CartClass(
     val item_Warrenty: String? = "",
     val item_Descrip: String? = "",
     val item_Price: String? = "",
-    val item_count:Int?=0
+    val item_count: Int? = 0
 )

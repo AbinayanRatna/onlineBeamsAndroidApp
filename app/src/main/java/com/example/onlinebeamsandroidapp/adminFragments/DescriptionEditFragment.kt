@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.databinding.FragmentDescriptionBinding
-import kotlin.concurrent.fixedRateTimer
 
 
 class DescriptionEditFragment : Fragment() {
@@ -28,7 +27,8 @@ class DescriptionEditFragment : Fragment() {
         }
 
         binding.descriptionCancelBtn.setOnClickListener {
-            fragmentManager?.beginTransaction()?.replace(R.id.fragment_container,CategoryFragment())?.commit()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container, CategoryFragment())?.commit()
         }
         val output1 = arguments?.getString("message").toString()
         val output2 = arguments?.getString("message2").toString()

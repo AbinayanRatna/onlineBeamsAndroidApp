@@ -22,6 +22,7 @@ class AdminLoginActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
+
                 else -> {
                     Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
                     binding.userName.text = null
@@ -31,7 +32,7 @@ class AdminLoginActivity : AppCompatActivity() {
         }
 
         binding.btnGuest.setOnClickListener {
-            val intent= Intent(this,MainActivityUser::class.java)
+            val intent = Intent(this, MainActivityUser::class.java)
             startActivity(intent)
             finish()
         }

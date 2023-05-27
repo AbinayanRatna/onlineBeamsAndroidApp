@@ -49,7 +49,7 @@ class EditFragment : Fragment() {
         val itemPrice = binding.priceEditText.text.toString()
         val itemImage = arguments?.getString("message7").toString()
         binding.updateBtn.setOnClickListener {
-            dataAdd(itemId,itemDescription,itemName,itemWarrenty,itemPrice,itemImage)
+            dataAdd(itemId, itemDescription, itemName, itemWarrenty, itemPrice, itemImage)
         }
         binding.deleteBtn.setOnClickListener {
             deleteData()
@@ -76,7 +76,15 @@ class EditFragment : Fragment() {
 
         }
     }
-    private fun dataAdd(itemId:String,itemDescription: String,itemName: String,itemWarrenty: String,itemPrice: String,itemImage: String) {
+
+    private fun dataAdd(
+        itemId: String,
+        itemDescription: String,
+        itemName: String,
+        itemWarrenty: String,
+        itemPrice: String,
+        itemImage: String
+    ) {
 
 
         if (itemId != null) {

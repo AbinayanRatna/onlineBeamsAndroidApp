@@ -20,7 +20,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_home" />
+            android:src="@drawable/cosmetics" />
 
         <TextView
             android:id="@+id/categoryNameTV"

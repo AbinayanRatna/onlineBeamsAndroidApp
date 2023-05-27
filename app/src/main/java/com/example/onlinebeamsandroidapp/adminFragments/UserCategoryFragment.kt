@@ -4,9 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,13 +30,13 @@ class UserCategoryFragment : Fragment() {
         binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerView.setHasFixedSize(true)
         categoryList = arrayListOf<CategoryClassOB>()
-        categoryList.add(CategoryClassOB("Electronics", R.drawable.baseline_home))
-        categoryList.add(CategoryClassOB("Power Tools", R.drawable.baseline_home))
-        categoryList.add(CategoryClassOB("Kitchen tools & utensils", R.drawable.baseline_home))
-        categoryList.add(CategoryClassOB("Baby care & toys", R.drawable.baseline_home))
-        categoryList.add(CategoryClassOB("Cosmetics", R.drawable.baseline_home))
-        categoryList.add(CategoryClassOB("Lights", R.drawable.baseline_home))
-        categoryList.add(CategoryClassOB("Others", R.drawable.baseline_home))
+        categoryList.add(CategoryClassOB("Electronics", R.drawable.electronic))
+        categoryList.add(CategoryClassOB("Power Tools", R.drawable.powertool))
+        categoryList.add(CategoryClassOB("Kitchen tools & utensils", R.drawable.kitchen))
+        categoryList.add(CategoryClassOB("Baby care & toys", R.drawable.babycare))
+        categoryList.add(CategoryClassOB("Cosmetics", R.drawable.cosmetics))
+        categoryList.add(CategoryClassOB("Lights", R.drawable.light))
+        categoryList.add(CategoryClassOB("Others", R.drawable.other))
 
         val addAdaptor = UserCategoryAdaptor(categoryList)
         binding.recyclerView.adapter = addAdaptor

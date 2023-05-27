@@ -17,6 +17,9 @@
         android:theme="@style/Theme.OnlineBeamsAndroidApp"
         tools:targetApi="31">
         <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminLoginActivity"
             android:exported="false" />
         <activity
