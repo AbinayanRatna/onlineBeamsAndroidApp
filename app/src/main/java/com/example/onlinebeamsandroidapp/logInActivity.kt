@@ -17,26 +17,12 @@ class logInActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
-            val userName = binding.userName.text.toString()
-            val password = binding.password.text.toString()
-            when (userName + " " + password) {
-                "admin password2" -> {
-                    val intent = Intent(this, MainActivityAdmin::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                else -> {
-                    Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
-                    binding.userName.text = null
-                    binding.password.text = null
-                }
-            }
-        }
-
-        binding.btnGuest.setOnClickListener {
-            val intent=Intent(this,MainActivityUser::class.java)
+            val intent=Intent(this,AdminLoginActivity::class.java)
             startActivity(intent)
-            finish()
+        }
+        binding.btnGuest.setOnClickListener {
+            val intent= Intent(this,MainActivityUser::class.java)
+            startActivity(intent)
         }
 
     }

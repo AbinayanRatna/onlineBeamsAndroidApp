@@ -19,11 +19,6 @@ import java.net.URLEncoder
 class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
 
     private lateinit var binding: ActivityMainUserBinding
-    private val editFragment = EditFragment()
-    private val addFragment = AddFragment()
-    private val itemsFragment = ItemsFragment()
-    private val descriptionFragment = DescriptionFragment()
-    private val categoryFragment = CategoryFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainUserBinding.inflate(layoutInflater)
@@ -33,7 +28,7 @@ class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.call -> {
-                    replaceFragment(descriptionFragment)
+                    sendWhatsappMessage("Hi,\nI am interested in your products")
                 }
 
                 R.id.home -> {
@@ -41,8 +36,9 @@ class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
                 }
 
                 R.id.logOut -> {
-                    val intent=Intent(this,logInActivity::class.java)
+                    val intent = Intent(this, logInActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
             }
             true
@@ -109,7 +105,7 @@ class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
         bundle.putString("message7", editTextData7)
         val transaction = supportFragmentManager.beginTransaction()
         fragment.arguments = bundle
-        transaction.replace(R.id.fragment_container, fragment).commit()
+        transaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
 
     }
 

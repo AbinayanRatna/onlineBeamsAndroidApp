@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <queries>
         <package android:name="com.whatsapp" />
@@ -15,13 +15,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineBeamsAndroidApp"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".AdminLoginActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivityUser"
             android:exported="false" />
         <activity
             android:name=".logInActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +33,7 @@
         </activity>
         <activity
             android:name=".MainActivityAdmin"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

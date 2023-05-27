@@ -10,34 +10,12 @@
 
 
 
-
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/userName"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/textbackground"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textColorHint="#939292"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/textbackground"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textColorHint="#979494"
-                android:textSize="20sp" />
 
             <Button
                 app:cornerRadius="10dp"

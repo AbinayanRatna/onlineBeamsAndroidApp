@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +28,8 @@ class UserCategoryFragment : Fragment() {
     ): View? {
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
         communicator = activity as FragmentCommunicator
+
+
         binding.recyclerView.layoutManager = GridLayoutManager(activity, 2)
         binding.recyclerView.setHasFixedSize(true)
         categoryList = arrayListOf<CategoryClassOB>()
@@ -55,7 +60,9 @@ class UserCategoryFragment : Fragment() {
 
             }
         )
+
         return binding.root
     }
+
 
 }
