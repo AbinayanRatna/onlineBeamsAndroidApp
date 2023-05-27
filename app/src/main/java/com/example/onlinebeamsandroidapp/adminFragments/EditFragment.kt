@@ -42,9 +42,14 @@ class EditFragment : Fragment() {
         Glide.with(requireActivity()).load(output7).into(binding.addImage)
 
         communicator = activity as FragmentCommunicator
-
+        val itemId = arguments?.getString("message").toString()
+        val itemDescription = arguments?.getString("message3").toString()
+        val itemName = binding.nameEditText.text.toString()
+        val itemWarrenty = binding.warrentyEditText.text.toString()
+        val itemPrice = binding.priceEditText.text.toString()
+        val itemImage = arguments?.getString("message7").toString()
         binding.updateBtn.setOnClickListener {
-            dataAdd()
+            dataAdd(itemId,itemDescription,itemName,itemWarrenty,itemPrice,itemImage)
         }
         binding.deleteBtn.setOnClickListener {
             deleteData()
@@ -71,22 +76,16 @@ class EditFragment : Fragment() {
 
         }
     }
+    private fun dataAdd(itemId:String,itemDescription: String,itemName: String,itemWarrenty: String,itemPrice: String,itemImage: String) {
 
-    private fun dataAdd() {
-        val itemId = arguments?.getString("message").toString()
-        val itemDescription = arguments?.getString("message3").toString()
-        val itemName = binding.nameEditText.text.toString()
-        val itemWarrenty = binding.warrentyEditText.text.toString()
-        val itemPrice = binding.priceEditText.text.toString()
-        val itemImage = arguments?.getString("message7").toString()
 
         if (itemId != null) {
+            communicator.toastMake("Wait saving process will take some time")
             if (selectedImageUri != null) {
                 val filename = UUID.randomUUID().toString()
                 val ref = FirebaseStorage.getInstance().getReference("/image/$filename")
                 ref.putFile(selectedImageUri!!)
                     .addOnSuccessListener { taskSnapshot ->
-                        communicator.toastMake("Photo saved")
                         taskSnapshot.metadata!!.reference!!.downloadUrl
                             .addOnSuccessListener { uri ->
                                 val image = uri.toString()

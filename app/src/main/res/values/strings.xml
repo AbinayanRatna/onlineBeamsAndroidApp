@@ -2,6 +2,7 @@
     <string name="app_name">onlineBeamsAndroidApp</string>
     <string name="home">Home</string>
     <string name="add">Add</string>
+    <string name="call">Call</string>
     <string name="logout">Logout</string>
     <string name="addImage">Select Image</string>
     <string name="add_item">Add Item</string>

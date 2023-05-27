@@ -1,19 +1,43 @@
 package com.example.onlinebeamsandroidapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.onlinebeamsandroidapp.adminFragments.CategoryFragment
+import com.example.onlinebeamsandroidapp.adminFragments.UserCategoryFragment
 import com.example.onlinebeamsandroidapp.databinding.ActivityLoginBinding
-import java.io.File
 
 
 class logInActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var file: File
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnLogin.setOnClickListener {
+            val userName = binding.userName.text.toString()
+            val password = binding.password.text.toString()
+            when (userName + " " + password) {
+                "admin password2" -> {
+                    val intent = Intent(this, MainActivityAdmin::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                else -> {
+                    Toast.makeText(this, "Incorrect credentials", Toast.LENGTH_SHORT).show()
+                    binding.userName.text = null
+                    binding.password.text = null
+                }
+            }
+        }
+
+        binding.btnGuest.setOnClickListener {
+            val intent=Intent(this,MainActivityUser::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.R
+import com.example.onlinebeamsandroidapp.databinding.ActivityMainUserBinding
 import com.example.onlinebeamsandroidapp.databinding.FragmentUserViewBinding
 
 
@@ -21,7 +22,7 @@ class UserViewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
      ): View? {
-        binding = FragmentUserViewBinding.inflate(inflater, container, false)
+        binding =FragmentUserViewBinding.inflate(inflater, container, false)
         communicator=activity as FragmentCommunicator
         binding.itemImageShow.setBackgroundResource(0)
         val output1 = arguments?.getString("message")

@@ -13,12 +13,12 @@ import com.example.onlinebeamsandroidapp.adminFragments.DescriptionFragment
 import com.example.onlinebeamsandroidapp.adminFragments.EditFragment
 import com.example.onlinebeamsandroidapp.adminFragments.ItemsFragment
 import com.example.onlinebeamsandroidapp.adminFragments.UserCategoryFragment
-import com.example.onlinebeamsandroidapp.databinding.ActivityMainBinding
+import com.example.onlinebeamsandroidapp.databinding.ActivityMainUserBinding
 import java.net.URLEncoder
 
-class MainActivity : AppCompatActivity(), FragmentCommunicator {
+class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainUserBinding
     private val editFragment = EditFragment()
     private val addFragment = AddFragment()
     private val itemsFragment = ItemsFragment()
@@ -26,22 +26,23 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
     private val categoryFragment = CategoryFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(UserCategoryFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.add -> {
+                R.id.call -> {
                     replaceFragment(descriptionFragment)
                 }
 
                 R.id.home -> {
-                    replaceFragment(categoryFragment)
+                    replaceFragment(UserCategoryFragment())
                 }
 
                 R.id.logOut -> {
-                    replaceFragment(categoryFragment)
+                    val intent=Intent(this,logInActivity::class.java)
+                    startActivity(intent)
                 }
             }
             true
@@ -63,18 +64,22 @@ class MainActivity : AppCompatActivity(), FragmentCommunicator {
     }
 
     override fun sendWhatsappMessage(message: String) {
-            val number:String="+94775713207"
-            val packageManager : PackageManager = packageManager
-            val i = Intent(Intent.ACTION_VIEW)
-            val url = "https://api.whatsapp.com/send?phone=" + number + "&text="+ URLEncoder.encode(message,"UTF-8")
-            i.setPackage("com.whatsapp")
-            i.data = Uri.parse(url)
+        val number: String = "+94775713207"
+        val packageManager: PackageManager = packageManager
+        val i = Intent(Intent.ACTION_VIEW)
+        val url = "https://api.whatsapp.com/send?phone=" + number + "&text=" + URLEncoder.encode(
+            message,
+            "UTF-8"
+        )
+        i.setPackage("com.whatsapp")
+        i.data = Uri.parse(url)
 
 
-        if(i.resolveActivity(packageManager) != null){
-                startActivity(i)
-            } else{
-            Toast.makeText(this,"Download the whatsapp app and then try again",Toast.LENGTH_SHORT).show()
+        if (i.resolveActivity(packageManager) != null) {
+            startActivity(i)
+        } else {
+            Toast.makeText(this, "Download the whatsapp app and then try again", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

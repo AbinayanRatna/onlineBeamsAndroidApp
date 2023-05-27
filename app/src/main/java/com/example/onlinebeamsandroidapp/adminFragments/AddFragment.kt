@@ -38,6 +38,7 @@ class AddFragment : Fragment() {
             binding.tvDescriptionAdded.text = getString(R.string.description_added)
         }
 
+
         binding.babyCareRdbtn.setOnClickListener {
             typeSelectButton = binding.babyCareRdbtn.text.toString()
         }
@@ -71,37 +72,6 @@ class AddFragment : Fragment() {
             intent.type = "image/*"
             startActivityForResult(intent, 0)
         }
-
-        binding.proceedBtn.setOnClickListener {
-            saveDataToDatabase()
-        }
-        return binding.root
-
-
-    }
-
-    var selectedImageUri: Uri? = null
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
-            selectedImageUri = data.data
-            val bitmap =
-                MediaStore.Images.Media.getBitmap(activity?.contentResolver, selectedImageUri)
-            val bitmapDrawable = BitmapDrawable(bitmap)
-            binding.addImage.setBackgroundDrawable(bitmapDrawable)
-
-        }
-    }
-
-    fun saveDataToDatabase() {
-        val itemName = binding.nameEditText.text.toString()
-        val itemWarrenty = binding.warrentyEditText.text.toString()
-        val itemPrice = binding.priceEditText.text.toString()
-        var imgUrl = ""
-        val output = arguments?.getString("message").toString()
-
         when (typeSelectButton) {
             "Electronic" -> {
                 databaseRef = FirebaseDatabase.getInstance().getReference("Electronic")
@@ -131,6 +101,35 @@ class AddFragment : Fragment() {
                 databaseRef = FirebaseDatabase.getInstance().getReference("Others")
             }
         }
+        binding.proceedBtn.setOnClickListener {
+            saveDataToDatabase()
+        }
+        return binding.root
+
+
+    }
+
+    var selectedImageUri: Uri? = null
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
+            selectedImageUri = data.data
+            val bitmap =
+                MediaStore.Images.Media.getBitmap(activity?.contentResolver, selectedImageUri)
+            val bitmapDrawable = BitmapDrawable(bitmap)
+            binding.addImage.setBackgroundDrawable(bitmapDrawable)
+
+        }
+    }
+
+    fun saveDataToDatabase() {
+        val itemName = binding.nameEditText.text.toString()
+        val itemWarrenty = binding.warrentyEditText.text.toString()
+        val itemPrice = binding.priceEditText.text.toString()
+        var imgUrl = ""
+        val output = arguments?.getString("message").toString()
 
         val itemId = databaseRef.push().key
         communicator.toastMake("Wait.Saving Process will take some time.")
