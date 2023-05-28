@@ -13,6 +13,9 @@ class AdminLoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if (!isInternetAvailable(this)) {
+            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+        }
         binding.btnLogin.setOnClickListener {
             val userName = binding.userName.text.toString()
             val password = binding.password.text.toString()

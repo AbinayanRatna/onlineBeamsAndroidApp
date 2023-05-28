@@ -20,7 +20,9 @@ class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
         setContentView(binding.root)
         supportActionBar?.hide()
         replaceFragment(UserCategoryFragment())
-
+        if (!isInternetAvailable(this)) {
+            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+        }
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.call -> {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#978888"
+    android:background="#D19AB1"
     tools:context=".adminFragments.AddFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -23,6 +23,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/add_item"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="30dp" />
 

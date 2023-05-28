@@ -12,6 +12,7 @@ import com.example.onlinebeamsandroidapp.FragmentCommunicator
 import com.example.onlinebeamsandroidapp.R
 import com.example.onlinebeamsandroidapp.adaptors.UserCategoryAdaptor
 import com.example.onlinebeamsandroidapp.databinding.FragmentCategoryBinding
+import com.example.onlinebeamsandroidapp.isInternetAvailable
 
 
 class UserCategoryFragment : Fragment() {
@@ -43,16 +44,21 @@ class UserCategoryFragment : Fragment() {
         addAdaptor.setOnCategoryClickListener(
             object : UserCategoryAdaptor.onCategoryClickListener {
                 override fun onItemClick(position: Int) {
-                    communicator.passData(
-                        categoryList[position].category_Name,
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        UserItemFragment()
-                    )
+                    if(isInternetAvailable(requireContext())){
+                        communicator.passData(
+                            categoryList[position].category_Name,
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            UserItemFragment()
+                        )
+                    }else{
+                        communicator.toastMake("No internet connection. Try again!")
+                    }
+
                 }
 
             }

@@ -22,6 +22,9 @@ class MainActivityAdmin : AppCompatActivity(), FragmentCommunicator {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        if (!isInternetAvailable(this)) {
+            Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
+        }
         replaceFragment(CategoryFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {

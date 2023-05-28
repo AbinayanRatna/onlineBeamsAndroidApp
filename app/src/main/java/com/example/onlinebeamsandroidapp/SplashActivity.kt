@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.ContextThemeWrapper
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
@@ -31,9 +32,24 @@ class SplashActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent=Intent(this,logInActivity::class.java)
-            startActivity(intent)
-            finish()
+            if(isInternetAvailable(this)){
+                val intent=Intent(this,logInActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else{
+                val builderIntConnect =
+                    AlertDialog.Builder(ContextThemeWrapper(this, R.style.AlertDialogCustom))
+                        .setTitle("No Internet Connection")
+                        .setMessage("Turn on the internet and try again")
+                        .setPositiveButton("ok") { dialog: DialogInterface, which: Int -> finish() }
+                val dialog1 = builderIntConnect.create()
+                dialog1.setCancelable(false)
+                dialog1.setCanceledOnTouchOutside(false)
+                dialog1.show()
+                dialog1.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(Color.BLACK)
+            }
+
+
         }, splashTime)
     }
 }
