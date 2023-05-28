@@ -47,7 +47,8 @@ class ItemAdaptors(val itemList: ArrayList<ItemClass>, val fragment: Fragment) :
     override fun onBindViewHolder(holder: ItemAdaptors.myViewHolder, position: Int) {
         val currentItem = itemList[position]
         holder.itemName.text = currentItem.item_Name
-        holder.itemPrice.text = currentItem.item_Price
+        val rs="Rs."
+        holder.itemPrice.text = rs+currentItem.item_Price
         Glide.with(fragment)
             .load(currentItem.item_Image)
             .into(holder.itemImage)

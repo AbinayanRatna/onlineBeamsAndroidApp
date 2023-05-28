@@ -56,7 +56,11 @@ class UserViewFragment : Fragment() {
         }
         binding.btnbuyNow.setOnClickListener {
             count = binding.tvCount.text.toString().toInt()
-            communicator.sendWhatsappMessage("Product name : ${output4!!} ,\n\n  count :  $count \n\n product image: \n${output7!!} \n\n I saw this on the official app. And I am interested.\n")
+            if (count != 0) {
+                communicator.sendWhatsappMessage("Product name : ${output4!!} ,\n\ncount :  $count \n\nproduct image: \n${output7!!} \n\nI saw this on the official app. And I am interested.\n")
+            } else {
+                communicator.toastMake("Please select how many items you want!")
+            }
         }
 
 

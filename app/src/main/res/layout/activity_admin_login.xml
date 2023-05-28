@@ -4,23 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/red"
     android:orientation="vertical"
     tools:context=".AdminLoginActivity">
 
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lock"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="80dp"/>
         <EditText
             android:id="@+id/userName"
             android:layout_width="250dp"
@@ -45,30 +47,55 @@
             android:textColorHint="#979494"
             android:textSize="20sp" />
 
-        <Button
-            app:cornerRadius="10dp"
-            android:id="@+id/btnLogin"
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#433030"
-            android:text="Admin Login"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="30dp"/>
+            android:id="@+id/btnLogin"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"
+            app:cardCornerRadius="40dp">
 
-        <Button
-            app:cornerRadius="10dp"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:outlineProvider="none"
+                android:text="ADMIN LOGIN"
+                android:layout_margin="10dp"
+                android:textColor="@color/red"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/btnGuest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#433030"
-            android:text="Continue as Buyer"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+            android:backgroundTint="@color/white"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="30dp"
+            android:outlineProvider="none"
+            app:cardCornerRadius="40dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/white"
+                android:outlineProvider="none"
+                android:text="CONTINUE AS BUYER"
+                android:textColor="@color/red"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:cornerRadius="10dp" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>
