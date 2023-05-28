@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.OnlineBeamsAndroidApp"
+        android:theme="@style/Base.Theme.OnlineBeamsAndroidApp"
         tools:targetApi="31">
         <activity
             android:name=".SplashActivity"
@@ -27,11 +27,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/Theme.OnlineBeamsAndroidApp.splashScreen"
             android:name=".AdminLoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivityUser"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".logInActivity"
             android:exported="true">

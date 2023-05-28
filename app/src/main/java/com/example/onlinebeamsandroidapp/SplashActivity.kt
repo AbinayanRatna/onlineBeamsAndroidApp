@@ -17,7 +17,7 @@ import com.example.onlinebeamsandroidapp.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySplashBinding
-    private val splashTime: Long = 3000
+    private val splashTime: Long = 1000
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivitySplashBinding.inflate(layoutInflater)

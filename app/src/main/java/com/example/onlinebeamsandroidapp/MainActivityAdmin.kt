@@ -21,6 +21,7 @@ class MainActivityAdmin : AppCompatActivity(), FragmentCommunicator {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
         replaceFragment(CategoryFragment())
 
         binding.bottomNavigation.setOnItemSelectedListener {

@@ -12,6 +12,7 @@ class logInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, AdminLoginActivity::class.java)
