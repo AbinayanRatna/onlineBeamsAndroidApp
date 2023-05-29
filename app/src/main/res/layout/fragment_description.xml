@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BAAAAA"
+    android:background="#E8B4C6"
     android:orientation="vertical"
     tools:context=".adminFragments.DescriptionFragment">
 
@@ -14,6 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_weight="0.5"
+        android:textStyle="bold"
         android:text="Add a description"
         android:textColor="@color/black"
         android:textSize="25sp" />
@@ -23,7 +24,7 @@
         android:layout_height="0dp"
         android:layout_margin="20dp"
         android:layout_weight="17"
-        android:backgroundTint="@color/lightBlue">
+        android:backgroundTint="@color/white">
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -34,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@color/lightBlue"
+                android:background="@color/white"
                 android:hint="description"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
@@ -53,9 +54,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/red"
             android:text="Next"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <Button
@@ -64,9 +65,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/red"
             android:text="Cancel"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

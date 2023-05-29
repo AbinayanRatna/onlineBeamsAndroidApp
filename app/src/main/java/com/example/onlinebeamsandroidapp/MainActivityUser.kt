@@ -4,12 +4,16 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.adminFragments.UserCategoryFragment
 import com.example.onlinebeamsandroidapp.databinding.ActivityMainUserBinding
 import java.net.URLEncoder
+import java.util.Locale.filter
 
 class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
 
@@ -20,6 +24,7 @@ class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
         setContentView(binding.root)
         supportActionBar?.hide()
         replaceFragment(UserCategoryFragment())
+
         if (!isInternetAvailable(this)) {
             Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
         }
@@ -106,6 +111,5 @@ class MainActivityUser : AppCompatActivity(), FragmentCommunicator {
         transaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
 
     }
-
 
 }

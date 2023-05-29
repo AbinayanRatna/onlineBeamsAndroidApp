@@ -61,4 +61,9 @@ class UserItemAdaptor(private var itemList: ArrayList<ItemClass>, val fragment: 
     override fun getItemCount(): Int {
         return itemList.size
     }
+
+    fun setFilteredList(itemArrayList: ArrayList<ItemClass>) {
+        this.itemList=itemArrayList
+        notifyDataSetChanged()
+    }
 }

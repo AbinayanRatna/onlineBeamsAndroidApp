@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.onlinebeamsandroidapp.adminFragments.AddFragment
 import com.example.onlinebeamsandroidapp.adminFragments.CategoryFragment
+import com.example.onlinebeamsandroidapp.adminFragments.DescriptionFragment
 import com.example.onlinebeamsandroidapp.databinding.ActivityMainBinding
 import java.net.URLEncoder
 
@@ -30,7 +31,7 @@ class MainActivityAdmin : AppCompatActivity(), FragmentCommunicator {
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.add -> {
-                    replaceFragment(addFragment)
+                    replaceFragment(DescriptionFragment())
                 }
 
                 R.id.home -> {

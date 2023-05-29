@@ -3,10 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".adminFragments.ItemsFragment">
 
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search items"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

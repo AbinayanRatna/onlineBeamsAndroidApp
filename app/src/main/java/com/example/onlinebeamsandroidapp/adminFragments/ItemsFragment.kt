@@ -1,9 +1,11 @@
 package com.example.onlinebeamsandroidapp.adminFragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.onlinebeamsandroidapp.FragmentCommunicator
@@ -15,6 +17,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.Locale
 
 
 class ItemsFragment : Fragment() {
@@ -22,6 +25,7 @@ class ItemsFragment : Fragment() {
     private lateinit var binding: FragmentItemsBinding
     private lateinit var communicator: FragmentCommunicator
     private lateinit var databaseRef: DatabaseReference
+    private lateinit var itemSearchList: ArrayList<ItemClass>
     private lateinit var itemArrayList: ArrayList<ItemClass>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +36,35 @@ class ItemsFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.setHasFixedSize(true)
         itemArrayList = arrayListOf<ItemClass>()
+        itemSearchList = arrayListOf<ItemClass>()
         getUserData()
+        binding.searchView.clearFocus()
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                itemSearchList.clear()
+                var searchText=newText!!.lowercase(Locale.getDefault())
+                if(searchText.isNotEmpty()){
+                    itemArrayList.forEach {
+                        if(it.item_Name!!.lowercase(Locale.getDefault()).contains(searchText)){
+                            Log.d("done1","done1")
+                            itemSearchList.add(it)
+                        }
+                    }
+                    binding.recyclerView.adapter!!.notifyDataSetChanged()
+                }else{
+                    itemSearchList.clear()
+                    itemSearchList.addAll(itemArrayList)
+                    binding.recyclerView.adapter!!.notifyDataSetChanged()
+                }
+                return false
+            }
+
+        })
         return binding.root
     }
 
@@ -88,7 +120,8 @@ class ItemsFragment : Fragment() {
                         itemArrayList.add(item!!)
 
                     }
-                    val mAdapter = ItemAdaptors(itemArrayList, this@ItemsFragment)
+                    itemSearchList.addAll(itemArrayList)
+                    val mAdapter = ItemAdaptors(itemSearchList, this@ItemsFragment)
                     binding.recyclerView.adapter = mAdapter
                     binding.progressBar.visibility = View.GONE
                     mAdapter.setOnItemClickListener(object : ItemAdaptors.onItemClickListener {

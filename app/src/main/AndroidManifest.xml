@@ -23,11 +23,6 @@
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.OnlineBeamsAndroidApp.splashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:theme="@style/Theme.OnlineBeamsAndroidApp.splashScreen"
@@ -45,7 +40,13 @@
         </activity>
         <activity
             android:name=".MainActivityAdmin"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
