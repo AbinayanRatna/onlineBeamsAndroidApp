@@ -13,10 +13,19 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:textStyle="bold"
         android:text="Select a category"
         android:textColor="@color/black"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:backgroundTint="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/red"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

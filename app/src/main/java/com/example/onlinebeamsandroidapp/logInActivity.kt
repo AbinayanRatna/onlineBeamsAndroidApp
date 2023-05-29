@@ -20,6 +20,7 @@ class logInActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, AdminLoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
         binding.btnGuest.setOnClickListener {
             val intent = Intent(this, MainActivityUser::class.java)

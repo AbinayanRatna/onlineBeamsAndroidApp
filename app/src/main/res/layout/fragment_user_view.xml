@@ -60,7 +60,7 @@
                         android:layout_marginBottom="10dp"
                         android:text="30000"
                         android:textColor="@color/black"
-                        android:textSize="35sp"
+                        android:textSize="30sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -69,10 +69,10 @@
                         android:layout_height="30dp"
                         android:layout_marginLeft="30dp"
                         android:layout_marginTop="60dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="25dp"
                         android:text="3 months warrenty seller"
                         android:textColor="@color/black"
-                        android:textSize="25sp"
+                        android:textSize="20sp"
                         android:textStyle="italic" />
                 </androidx.cardview.widget.CardView>
 

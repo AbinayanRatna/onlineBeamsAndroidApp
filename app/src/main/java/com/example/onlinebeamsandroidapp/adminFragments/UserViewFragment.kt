@@ -33,8 +33,8 @@ class UserViewFragment : Fragment() {
 
         binding.itemNameShow.text = output4
         binding.itemDescriptionShow.text = output3
-        binding.itemPriceShow.text = output6
-        binding.itemWarrentyShow.text = output5
+        binding.itemPriceShow.text = "Rs.$output6 only"
+        binding.itemWarrentyShow.text = "With $output5 warranty"
         Glide.with(requireActivity()).load(output7).into(binding.itemImageShow)
         binding.btnCancel.setOnClickListener {
             fragmentManager?.beginTransaction()

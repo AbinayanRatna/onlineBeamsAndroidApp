@@ -90,7 +90,7 @@ class ItemsFragment : Fragment() {
                     }
                     val mAdapter = ItemAdaptors(itemArrayList, this@ItemsFragment)
                     binding.recyclerView.adapter = mAdapter
-
+                    binding.progressBar.visibility = View.GONE
                     mAdapter.setOnItemClickListener(object : ItemAdaptors.onItemClickListener {
                         override fun onItemClick(position: Int) {
                             communicator.passData(

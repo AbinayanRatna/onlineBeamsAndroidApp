@@ -78,7 +78,6 @@ class UserItemFragment : Fragment() {
 
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 if (snapshot.exists()) {
 
                     for (userSnapshot in snapshot.children) {
@@ -89,7 +88,7 @@ class UserItemFragment : Fragment() {
                     }
                     val mAdapter = UserItemAdaptor(itemArrayList, this@UserItemFragment)
                     binding.recyclerView.adapter = mAdapter
-
+                    binding.progressBar.visibility = View.GONE
                     mAdapter.setOnItemClickListener(object : UserItemAdaptor.onItemClickListener {
                         override fun onItemClick(position: Int) {
                             communicator.passData(

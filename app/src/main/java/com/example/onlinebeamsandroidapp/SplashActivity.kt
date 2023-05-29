@@ -24,10 +24,10 @@ class SplashActivity : AppCompatActivity() {
         binding=ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-     //   val imgSplash: ImageView = findViewById(R.id.img_splash)
+        val imgSplash: ImageView = findViewById(R.id.img_splash)
 
-    //    val rightToLeftAnim = AnimationUtils.loadAnimation(this, R.anim.right_to_left)
-       // imgSplash.startAnimation(rightToLeftAnim)
+        val rightToLeftAnim = AnimationUtils.loadAnimation(this, R.anim.right_to_left)
+        imgSplash.startAnimation(rightToLeftAnim)
 
         supportActionBar?.hide()
 
