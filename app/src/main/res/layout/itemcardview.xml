@@ -6,7 +6,7 @@
     android:layout_marginLeft="40dp"
     android:layout_marginRight="40dp"
     android:layout_marginBottom="20dp"
-    android:backgroundTint="@color/red"
+    android:backgroundTint="@color/lightred"
     app:cardCornerRadius="30dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat

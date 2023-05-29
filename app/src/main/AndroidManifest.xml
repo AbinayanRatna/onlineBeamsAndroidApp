@@ -19,34 +19,38 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.OnlineBeamsAndroidApp"
         tools:targetApi="31">
+
         <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.OnlineBeamsAndroidApp.splashScreen">
-        </activity>
-        <activity
-            android:theme="@style/Theme.OnlineBeamsAndroidApp.splashScreen"
-            android:name=".AdminLoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivityUser"
-            android:exported="true" >
 
-        </activity>
-        <activity
-            android:name=".logInActivity"
-            android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".MainActivityAdmin"
-            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".AdminLoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.OnlineBeamsAndroidApp.splashScreen" />
+
+        <activity
+            android:name=".MainActivityUser"
+            android:exported="true" />
+
+
+        <activity
+            android:name=".logInActivity"
+            android:exported="true" />
+
+
+        <activity
+            android:name=".MainActivityAdmin"
+            android:exported="true" />
+
     </application>
 
 </manifest>
