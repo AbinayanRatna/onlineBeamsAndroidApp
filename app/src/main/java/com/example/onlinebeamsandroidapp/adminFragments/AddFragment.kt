@@ -63,7 +63,7 @@ class AddFragment : Fragment() {
 
         binding.cancelBtn.setOnClickListener {
             val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, editFragment)
+            transaction?.replace(R.id.fragment_container, CategoryFragment())
             transaction?.commit()
         }
 

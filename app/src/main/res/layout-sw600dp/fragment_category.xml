@@ -3,37 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".adminFragments.ItemsFragment">
+    tools:context=".adminFragments.CategoryFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/searchView"
-        app:iconifiedByDefault="false"
-        app:queryHint="Search items"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:gravity="center"
-        android:text="Select an Item"
+        android:text="Select a category"
         android:textColor="@color/black"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:backgroundTint="@color/white"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/red"/>
+        android:textStyle="bold"
+        android:textSize="30dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,10 +30,9 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/itemcardview" />
+                tools:listitem="@layout/categorycardview" />
 
         </ScrollView>
     </RelativeLayout>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

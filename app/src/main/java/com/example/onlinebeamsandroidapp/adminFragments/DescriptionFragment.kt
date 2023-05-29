@@ -35,12 +35,11 @@ class DescriptionFragment : Fragment() {
                 "",
                 addFragment
             )
-            communicator.toastMake("Description Added")
         }
 
         binding.descriptionCancelBtn.setOnClickListener {
             val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, editFragment)
+            transaction?.replace(R.id.fragment_container, CategoryFragment())
             transaction?.commit()
         }
         return binding.root
