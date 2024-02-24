@@ -6,7 +6,6 @@ Screenshots :
 <p float="left">
 <img src="scrshots/login.jpg" alt="Login" style="width: 100px"/>
 <img src="scrshots/admin.jpg" alt="admin" style="width: 100px"/>
-<img src="scrshots/home.jpg" alt="Home" style="width: 100px"/>
 <img src="scrshots/category.jpg" alt="category" style="width: 100px"/>
 <img src="scrshots/add.jpg" alt="add" style="width: 100px"/>
 <img src="scrshots/description.jpg" alt="description" style="width: 100px"/>
