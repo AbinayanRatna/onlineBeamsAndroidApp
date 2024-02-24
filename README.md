@@ -4,12 +4,14 @@ This app can be used to buy things using whatsapp. This app can be used by small
 
 Screenshots :
 <p float="left">
-<img src="scrshots/login.jpg" alt="Login" style="width: 150px"/>
-<img src="scrshots/admin.jpg" alt="admin" style="width: 150px"/>
-<img src="scrshots/category.jpg" alt="category" style="width: 150px"/>
-<img src="scrshots/add.jpg" alt="add" style="width: 150px"/>
-<img src="scrshots/description.jpg" alt="description" style="width: 150px"/>
-<img src="scrshots/items.jpg" alt="items" style="width: 150px"/>
+<img src="scrshots/admin.jpg" alt="admin" style="width: 300px"/>
+<img src="scrshots/add.jpg" alt="add" style="width: 300px"/>
+<img src="scrshots/description.jpg" alt="description" style="width: 300px"/>
+</p>
+<p float="left">
+<img src="scrshots/login.jpg" alt="Login" style="width: 300px"/>
+<img src="scrshots/category.jpg" alt="category" style="width: 300px"/>
+<img src="scrshots/items.jpg" alt="items" style="width: 300px"/>
 </p>
 Functions that can be done,
 
