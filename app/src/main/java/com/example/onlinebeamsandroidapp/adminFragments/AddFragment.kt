@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +24,7 @@ class AddFragment : Fragment() {
     private lateinit var binding: FragmentAddBinding
     private lateinit var databaseRef: DatabaseReference
     private lateinit var communicator: FragmentCommunicator
-    var typeSelectButton: String = ""
+    var typeSelectButton: String=""
     var editFragment = EditFragment()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,36 +73,37 @@ class AddFragment : Fragment() {
             intent.type = "image/*"
             startActivityForResult(intent, 0)
         }
-        when (typeSelectButton) {
-            "Electronic" -> {
-                databaseRef = FirebaseDatabase.getInstance().getReference("Electronic")
-            }
 
-            "Power Tool" -> {
-                databaseRef = FirebaseDatabase.getInstance().getReference("PowerTool")
-            }
-
-            "Kitchen Tool" -> {
-                databaseRef = FirebaseDatabase.getInstance().getReference("KitchenTool")
-            }
-
-            "Baby care" -> {
-                databaseRef = FirebaseDatabase.getInstance().getReference("BabyCare")
-            }
-
-            "Cosmetics" -> {
-                databaseRef = FirebaseDatabase.getInstance().getReference("Cosmetics")
-            }
-
-            "Lights" -> {
-                databaseRef = FirebaseDatabase.getInstance().getReference("Lights")
-            }
-
-            else -> {
-                databaseRef = FirebaseDatabase.getInstance().getReference("Others")
-            }
-        }
         binding.proceedBtn.setOnClickListener {
+            when (typeSelectButton) {
+                "Electronic" -> {
+                    databaseRef = FirebaseDatabase.getInstance().getReference("Electronic")
+                }
+
+                "Power Tool" -> {
+                    databaseRef = FirebaseDatabase.getInstance().getReference("PowerTool")
+                }
+
+                "Kitchen Tool" -> {
+                    databaseRef = FirebaseDatabase.getInstance().getReference("KitchenTool")
+                }
+
+                "Baby care" -> {
+                    databaseRef = FirebaseDatabase.getInstance().getReference("BabyCare")
+                }
+
+                "Cosmetics" -> {
+                    databaseRef = FirebaseDatabase.getInstance().getReference("Cosmetics")
+                }
+
+                "Lights" -> {
+                    databaseRef = FirebaseDatabase.getInstance().getReference("Lights")
+                }
+
+                else -> {
+                    databaseRef = FirebaseDatabase.getInstance().getReference("Others")
+                }
+            }
             saveDataToDatabase()
         }
         return binding.root
